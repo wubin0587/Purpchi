@@ -68,3 +68,83 @@ int calculateZiwei(int wuxingJu, int lunarDay) {
     int offset = (lunarDay - 1) / step;
     return (startPalace + offset) % 12;
 }
+
+int calculateTianji(int ziweiPalace) {
+    // 紫微逆一为天机
+    return (ziweiPalace - 1 + 12) % 12;
+}
+
+int calculateTaiyang(int ziweiPalace) {
+    // 紫微逆三为太阳
+    return (ziweiPalace - 3 + 12) % 12;
+}
+
+int calculateWuqu(int ziweiPalace) {
+    // 紫微逆四为武曲
+    return (ziweiPalace - 4 + 12) % 12;
+}
+
+int calculateTiantong(int ziweiPalace) {
+    // 紫微逆五为天同
+    return (ziweiPalace - 5 + 12) % 12;
+}
+
+int calculateLianzhen(int ziweiPalace) {
+    // 紫微逆八为廉贞
+    return (ziweiPalace - 8 + 12) % 12;
+}
+
+
+// --- 天府星系实现 ---
+
+int calculateTianfu(int ziweiPalace) {
+    // 天府的位置关于“寅申线”与紫微对称
+    // 在我们的坐标系中 (寅=0, 申=6), 轴线在 0 和 6 之间，可以理解为 (4 - x)
+    // 寅(0) -> 巳(4)
+    // 卯(1) -> 辰(3)
+    // 辰(2) -> 卯(2)
+    // 巳(3) -> 寅(1)
+    return (4 - ziweiPalace + 12) % 12;
+}
+
+int calculateTaiyin(int ziweiPalace) {
+    // 天府顺一为太阴
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 1) % 12;
+}
+
+int calculateTanlang(int ziweiPalace) {
+    // 天府顺二为贪狼
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 2) % 12;
+}
+
+int calculateJumen(int ziweiPalace) {
+    // 天府顺三为巨门
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 3) % 12;
+}
+
+int calculateTianxiang(int ziweiPalace) {
+    // 天府顺四为天相
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 4) % 12;
+}
+
+int calculateTianliang(int ziweiPalace) {
+    // 天府顺五为天梁
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 5) % 12;
+}
+
+int calculateQisha(int ziweiPalace) {
+    // 天府顺六为七杀
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 6) % 12;
+}
+
+int calculatePojun(int ziweiPalace) {
+    // 天府顺十为破军 (七杀之后空三格)
+    int tianfuPalace = calculateTianfu(ziweiPalace);
+    return (tianfuPalace + 10) % 12;
+}
