@@ -1,11 +1,14 @@
 // src\ziwei\5_sui.cpp
 #include "ziwei/5_sui.h"
 
+namespace purpchi{
+namespace arrange{
+
 // ============================================
 // 长生十二神实现
 // ============================================
 
-int calculateChangsheng(int mingPalace, int wuxingJu) {
+int arrangeChangsheng(int mingPalace, int wuxingJu) {
     // 根据五行局确定长生起始位置
     int changshengStart;
     
@@ -41,7 +44,7 @@ int calculateChangsheng(int mingPalace, int wuxingJu) {
 // 岁建十二星实现
 // ============================================
 
-int calculateSuijian(int yearBranch) {
+int arrangeSuijian(int yearBranch) {
     // 岁建在年支位置
     // 岁建十二星从年支开始顺行
     return yearBranch;
@@ -51,7 +54,7 @@ int calculateSuijian(int yearBranch) {
 // 將前十二星实现
 // ============================================
 
-int calculateJiangxing(int yearBranch) {
+int arrangeJiangxing(int yearBranch) {
     // 根据年支三合局确定將星位置
     
     if (yearBranch == 0 || yearBranch == 4 || yearBranch == 8) {
@@ -73,7 +76,10 @@ int calculateJiangxing(int yearBranch) {
 // 流年十二星实现
 // ============================================
 
-int calculateSuiqian(int yearBranch) {
+int arrangeSuiqian(int yearBranch) {
     // 岁前在年支前一位（逆行）
     return (yearBranch - 1 + 12) % 12;
+}
+
+}
 }

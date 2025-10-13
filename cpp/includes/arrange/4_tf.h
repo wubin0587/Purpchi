@@ -4,6 +4,9 @@
 #include "ziwei/1.h"
 #include "ziwei/2.h"
 
+namespace purpchi{
+namespace arrange{
+
 /**
  * @brief 计算化禄星的位置
  * 
@@ -11,7 +14,7 @@
  * @param ziweiPalace 紫微星的位置 (0-11)
  * @return 化禄星所在的位置 (0-11)，若无效则返回 -1
  */
-int calculateHuaLu(int yearLast, int ziweiPalace);
+int arrangeHuaLu(int yearLast, int ziweiPalace);
 
 /**
  * @brief 计算化权星的位置
@@ -20,7 +23,7 @@ int calculateHuaLu(int yearLast, int ziweiPalace);
  * @param ziweiPalace 紫微星的位置 (0-11)
  * @return 化权星所在的位置 (0-11)，若无效则返回 -1
  */
-int calculateHuaQuan(int yearLast, int ziweiPalace);
+int arrangeHuaQuan(int yearLast, int ziweiPalace);
 
 /**
  * @brief 计算化科星的位置
@@ -31,7 +34,7 @@ int calculateHuaQuan(int yearLast, int ziweiPalace);
  * @param timeBranch 时支 (0-11)，用于计算文昌文曲
  * @return 化科星所在的位置 (0-11)，若无效则返回 -1
  */
-int calculateHuaKe(int yearLast, int ziweiPalace, int lunarMonth, int timeBranch);
+int arrangeHuaKe(int yearLast, int ziweiPalace, int lunarMonth, int timeBranch);
 
 /**
  * @brief 计算化忌星的位置
@@ -41,6 +44,9 @@ int calculateHuaKe(int yearLast, int ziweiPalace, int lunarMonth, int timeBranch
  * @param timeBranch 时支 (0-11)，用于计算文昌文曲
  * @return 化忌星所在的位置 (0-11)，若无效则返回 -1
  */
-int calculateHuaJi(int yearLast, int ziweiPalace, int timeBranch);
+int arrangeHuaJi(int yearLast, int ziweiPalace, int timeBranch);
+
+}
+}
 
 #endif // PURPCHI_ZIWEI_4_TF_H

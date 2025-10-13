@@ -2,6 +2,9 @@
 #ifndef PURPCHI_ZIWEI_5_SUI_H
 #define PURPCHI_ZIWEI_5_SUI_H
 
+namespace purpchi{
+namespace arrange{
+
 // ============================================
 // 长生十二神（长生帝旺系列）
 // ============================================
@@ -19,7 +22,7 @@
  * 金四局       -> 长生在巳(3)，顺行
  * 土五局       -> 长生在申(6)，顺行
  */
-int calculateChangsheng(int mingPalace, int wuxingJu);
+int arrangeChangsheng(int mingPalace, int wuxingJu);
 
 // ============================================
 // 岁建十二星（岁建系列）
@@ -33,7 +36,7 @@ int calculateChangsheng(int mingPalace, int wuxingJu);
  * 
  * 算法: 岁建在年支位置，顺行十二星
  */
-int calculateSuijian(int yearBranch);
+int arrangeSuijian(int yearBranch);
 
 // ============================================
 // 將前十二星（將星系列）
@@ -52,7 +55,7 @@ int calculateSuijian(int yearBranch);
  * 亥卯未年 -> 將星在卯(1)
  * 顺行十二星
  */
-int calculateJiangxing(int yearBranch);
+int arrangeJiangxing(int yearBranch);
 
 // ============================================
 // 流年十二星（流年系列）
@@ -67,6 +70,8 @@ int calculateJiangxing(int yearBranch);
  * 算法: 岁前在年支前一位（逆行一宫）
  * 其余顺行
  */
-int calculateSuiqian(int yearBranch);
+int arrangeSuiqian(int yearBranch);
 
+}
+}
 #endif // PURPCHI_ZIWEI_5_SUI_H

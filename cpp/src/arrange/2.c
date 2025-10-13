@@ -1,29 +1,31 @@
 // src\ziwei\2.cpp
 #include "ziwei/2.h"
 
+namespace purpchi{
+namespace arrange{
 // ============================================
 // 六吉星实现
 // ============================================
 
-int calculateZuofu(int lunarMonth) {
+int arrangeZuofu(int lunarMonth) {
     return (2 + lunarMonth - 1) % 12;
 }
 
-int calculateYoubi(int lunarMonth) {
+int arrangeYoubi(int lunarMonth) {
     return (8 - lunarMonth + 1 + 12) % 12;
 }
 
-int calculateWenchang(int timeBranch) {
+int arrangeWenchang(int timeBranch) {
     int offset = (timeBranch >= 10) ? (timeBranch - 10) : (timeBranch + 2);
     return (2 - offset + 12) % 12;
 }
 
-int calculateWenqu(int timeBranch) {
+int arrangeWenqu(int timeBranch) {
     int offset = (timeBranch >= 10) ? (timeBranch - 10) : (timeBranch + 2);
     return (8 + offset) % 12;
 }
 
-int calculateTiankui(int yearLast) {
+int arrangeTiankui(int yearLast) {
     // 天魁查表
     // 尾数对应天干: 0-庚, 1-辛, 2-壬, 3-癸, 4-甲, 5-乙, 6-丙, 7-丁, 8-戊, 9-己
     // 庚->丑, 辛->午, 壬->卯, 癸->寅, 甲->丑, 乙->子, 丙->亥, 丁->亥, 戊->丑, 己->子
@@ -42,7 +44,7 @@ int calculateTiankui(int yearLast) {
     return kuiTable[yearLast];
 }
 
-int calculateTianyue(int yearLast) {
+int arrangeTianyue(int yearLast) {
     // 天钺查表
     // 庚->未, 辛->寅, 壬->巳, 癸->卯, 甲->未, 乙->申, 丙->酉, 丁->酉, 戊->未, 己->申
     static const int yueTable[10] = {
@@ -64,7 +66,7 @@ int calculateTianyue(int yearLast) {
 // 禄存实现
 // ============================================
 
-int calculateLucun(int yearLast) {
+int arrangeLucun(int yearLast) {
     // 禄存查表
     // 庚->申, 辛->酉, 壬->亥, 癸->子, 甲->寅, 乙->卯, 丙->巳, 丁->午, 戊->巳, 己->午
     static const int lucunTable[10] = {
@@ -86,17 +88,17 @@ int calculateLucun(int yearLast) {
 // 六煞星实现
 // ============================================
 
-int calculateQingyang(int yearLast) {
-    int lucun = calculateLucun(yearLast);
+int arrangeQingyang(int yearLast) {
+    int lucun = arrangeLucun(yearLast);
     return (lucun + 1) % 12;
 }
 
-int calculateTuoluo(int yearLast) {
-    int lucun = calculateLucun(yearLast);
+int arrangeTuoluo(int yearLast) {
+    int lucun = arrangeLucun(yearLast);
     return (lucun - 1 + 12) % 12;
 }
 
-int calculateHuoxing(int yearBranch, int timeBranch) {
+int arrangeHuoxing(int yearBranch, int timeBranch) {
     int sanheLeiXing;
     if (yearBranch == 0 || yearBranch == 4 || yearBranch == 8) {
         sanheLeiXing = 0;
@@ -119,7 +121,7 @@ int calculateHuoxing(int yearBranch, int timeBranch) {
     return huoxingTable[sanheLeiXing][timeBranch];
 }
 
-int calculateLingxing(int yearBranch, int timeBranch) {
+int arrangeLingxing(int yearBranch, int timeBranch) {
     int sanheLeiXing;
     if (yearBranch == 0 || yearBranch == 4 || yearBranch == 8) {
         sanheLeiXing = 0;
@@ -141,12 +143,12 @@ int calculateLingxing(int yearBranch, int timeBranch) {
     return lingxingTable[sanheLeiXing][timeBranch];
 }
 
-int calculateDikong(int timeBranch) {
+int arrangeDikong(int timeBranch) {
     int hourOffset = (timeBranch - 10 + 12) % 12;
     return (9 - hourOffset + 12) % 12;
 }
 
-int calculateDijie(int timeBranch) {
+int arrangeDijie(int timeBranch) {
     int hourOffset = (timeBranch - 10 + 12) % 12;
     return (9 + hourOffset) % 12;
 }
@@ -155,7 +157,7 @@ int calculateDijie(int timeBranch) {
 // 天马实现
 // ============================================
 
-int calculateTianma(int yearBranch) {
+int arrangeTianma(int yearBranch) {
     if (yearBranch == 2 || yearBranch == 6 || yearBranch == 10) {
         return 0;  // 申子辰 -> 寅
     } else if (yearBranch == 0 || yearBranch == 4 || yearBranch == 8) {
@@ -165,4 +167,7 @@ int calculateTianma(int yearBranch) {
     } else {
         return 3;  // 亥卯未 -> 巳
     }
+}
+
+}
 }

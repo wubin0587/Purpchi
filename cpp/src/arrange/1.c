@@ -1,16 +1,24 @@
-// src\ziwei\1.cpp
-#include "ziwei/1.h"
+// src\arrange\1.cpp
+#include "arrange/1.h"
 
-int calculateMingPalace(int lunarMonth, int timeBranch) {
+namespace purpchi {
+namespace arrange {
+
+int arrangeMingPalace(int lunarMonth, int timeBranch) {
     int timeOffset = (timeBranch >= 8) ? (timeBranch - 8) : (timeBranch + 4);
     return (lunarMonth - 1 + 12 - timeOffset) % 12;
 }
 
-int calculateShenPalace(int mingPalace, int lunarMonth) {
+int arrangeShenPalace(int mingPalace, int lunarMonth) {
     return (mingPalace + lunarMonth - 1) % 12;
 }
 
-int calculateWuxingJu(int mingPalace, int yearLast) {
+int arrangeLaiyinPalace(int yearLast) {
+    return 0;
+}
+
+
+int arrangeWuxingJu(int mingPalace, int yearLast) {
     // 确定三合局
     int sanheLeiXing;
     if (mingPalace == 0 || mingPalace == 4 || mingPalace == 8) {
@@ -22,7 +30,7 @@ int calculateWuxingJu(int mingPalace, int yearLast) {
     } else {
         sanheLeiXing = 3;  // 亥卯未=木局
     }
-    
+
     // 年份尾数分组 (对应天干)
     // 0,4,6 -> 庚甲丙
     // 1,5 -> 辛乙
@@ -41,7 +49,7 @@ int calculateWuxingJu(int mingPalace, int yearLast) {
     } else {
         digitGroup = 4;  // 戊己
     }
-    
+
     // 纳音五行局映射 [三合局][年份尾数组]
     static const int wuxingJuTable[4][5] = {
         {6, 5, 2, 3, 4},  // 火局: 火土水木金
@@ -49,13 +57,13 @@ int calculateWuxingJu(int mingPalace, int yearLast) {
         {5, 4, 6, 2, 3},  // 金局: 土金火水木
         {3, 2, 4, 5, 6}   // 木局: 木水金土火
     };
-    
+
     return wuxingJuTable[sanheLeiXing][digitGroup];
 }
 
-int calculateZiwei(int wuxingJu, int lunarDay) {
+int arrangeZiwei(int wuxingJu, int lunarDay) {
     int startPalace, step;
-    
+
     switch (wuxingJu) {
         case 2: startPalace = 0; step = 2; break;  // 水二局
         case 3: startPalace = 2; step = 3; break;  // 木三局
@@ -64,40 +72,39 @@ int calculateZiwei(int wuxingJu, int lunarDay) {
         case 6: startPalace = 8; step = 6; break;  // 火六局
         default: return 0;
     }
-    
+
     int offset = (lunarDay - 1) / step;
     return (startPalace + offset) % 12;
 }
 
-int calculateTianji(int ziweiPalace) {
+int arrangeTianji(int ziweiPalace) {
     // 紫微逆一为天机
     return (ziweiPalace - 1 + 12) % 12;
 }
 
-int calculateTaiyang(int ziweiPalace) {
+int arrangeTaiyang(int ziweiPalace) {
     // 紫微逆三为太阳
     return (ziweiPalace - 3 + 12) % 12;
 }
 
-int calculateWuqu(int ziweiPalace) {
+int arrangeWuqu(int ziweiPalace) {
     // 紫微逆四为武曲
     return (ziweiPalace - 4 + 12) % 12;
 }
 
-int calculateTiantong(int ziweiPalace) {
+int arrangeTiantong(int ziweiPalace) {
     // 紫微逆五为天同
     return (ziweiPalace - 5 + 12) % 12;
 }
 
-int calculateLianzhen(int ziweiPalace) {
+int arrangeLianzhen(int ziweiPalace) {
     // 紫微逆八为廉贞
     return (ziweiPalace - 8 + 12) % 12;
 }
 
-
 // --- 天府星系实现 ---
 
-int calculateTianfu(int ziweiPalace) {
+int arrangeTianfu(int ziweiPalace) {
     // 天府的位置关于“寅申线”与紫微对称
     // 在我们的坐标系中 (寅=0, 申=6), 轴线在 0 和 6 之间，可以理解为 (4 - x)
     // 寅(0) -> 巳(4)
@@ -107,44 +114,47 @@ int calculateTianfu(int ziweiPalace) {
     return (4 - ziweiPalace + 12) % 12;
 }
 
-int calculateTaiyin(int ziweiPalace) {
+int arrangeTaiyin(int ziweiPalace) {
     // 天府顺一为太阴
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 1) % 12;
 }
 
-int calculateTanlang(int ziweiPalace) {
+int arrangeTanlang(int ziweiPalace) {
     // 天府顺二为贪狼
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 2) % 12;
 }
 
-int calculateJumen(int ziweiPalace) {
+int arrangeJumen(int ziweiPalace) {
     // 天府顺三为巨门
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 3) % 12;
 }
 
-int calculateTianxiang(int ziweiPalace) {
+int arrangeTianxiang(int ziweiPalace) {
     // 天府顺四为天相
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 4) % 12;
 }
 
-int calculateTianliang(int ziweiPalace) {
+int arrangeTianliang(int ziweiPalace) {
     // 天府顺五为天梁
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 5) % 12;
 }
 
-int calculateQisha(int ziweiPalace) {
+int arrangeQisha(int ziweiPalace) {
     // 天府顺六为七杀
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 6) % 12;
 }
 
-int calculatePojun(int ziweiPalace) {
+int arrangePojun(int ziweiPalace) {
     // 天府顺十为破军 (七杀之后空三格)
-    int tianfuPalace = calculateTianfu(ziweiPalace);
+    int tianfuPalace = arrangeTianfu(ziweiPalace);
     return (tianfuPalace + 10) % 12;
 }
+
+} // namespace arrange
+} // namespace purpchi

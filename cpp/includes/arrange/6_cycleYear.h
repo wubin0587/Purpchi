@@ -2,6 +2,9 @@
 #ifndef PURPCHI_ZIWEI_6_CYCLEYEAR_H
 #define PURPCHI_ZIWEI_6_CYCLEYEAR_H
 
+namespace purpchi{
+namespace arrange{
+
 // ============================================
 // 大运系统
 // ============================================
@@ -84,5 +87,8 @@ int isXiaoxianShun(int isMale);
  * @return 1=阳年, 0=阴年
  */
 int isYangYear(int yearLast);
+
+}
+}
 
 #endif // PURPCHI_ZIWEI_6_CYCLEYEAR_H

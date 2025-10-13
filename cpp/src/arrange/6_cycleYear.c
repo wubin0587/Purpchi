@@ -1,6 +1,9 @@
 // D:\Purpchi\src\ziwei\6_cycleYear.cpp
 #include "ziwei/6_cycleYear.h"
 
+namespace purpchi{
+namespace arrange{
+
 // ============================================
 // 辅助函数实现
 // ============================================
@@ -47,4 +50,7 @@ int isXiaoxianShun(int isMale) {
 int calculateXiaoxianStart(int isMale) {
     // 男命从寅(0)，女命从申(6)
     return isMale ? 0 : 6;
+}
+
+}
 }
