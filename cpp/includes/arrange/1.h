@@ -6,6 +6,13 @@ namespace purpchi {
 namespace arrange {
 
 /**
+ 定寅宫天干 (五虎遁)
+ @param yearStem 年天干 (0-9: 甲-癸)
+ @return 寅宫的天干 (0-9: 甲-癸)
+*/
+int arrangeYinPalaceGan(int yearLast);
+
+/**
  定命宫位置
  @param lunarMonth 农历月 (1-12)
  @param timeBranch 时支 (0-11: 寅卯辰巳午未申酉戌亥子丑)
@@ -23,7 +30,7 @@ int arrangeShenPalace(int mingPalace, int lunarMonth);
 
 /**
  定来因宫位置
- @param yearStem 年天干 (0-9: 甲乙丙丁戊己庚辛壬癸)
+ @param yearLast 年天干 (0-9: 甲乙丙丁戊己庚辛壬癸)
  @return 来因宫位置 (0-11)
 */
 int arrangeLaiyinPalace(int yearLast);

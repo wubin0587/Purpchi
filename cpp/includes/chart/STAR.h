@@ -6,6 +6,8 @@ typedef struct {
     char name[16];      // 星曜名称（暂空）
     int bright[12];     // 各宫亮度（0为寅宫，1为卯宫，...，11为丑宫）
     int level;          // 星曜等级（甲乙丙）
+    int born_siHua;        // 生年四化标记（0无，1化禄，2化权，3化科，4化忌）
+    int ming_siHua;        // 命宫四化标记（0无，1化禄，2化权，3化科，4化忌）
 } Star;
 
 // 亮度对应关系：

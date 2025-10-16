@@ -46,6 +46,34 @@ int arrangeHuaKe(int yearLast, int ziweiPalace, int lunarMonth, int timeBranch);
  */
 int arrangeHuaJi(int yearLast, int ziweiPalace, int timeBranch);
 
+/**
+ * @brief 根据年干获取化禄星的ID
+ * @param yearLast 年份尾数 (0-9)
+ * @return 对应星曜的ID，无效则返回-1
+ */
+int getHuaLuStarId(int yearLast);
+
+/**
+ * @brief 根据年干获取化权星的ID
+ * @param yearLast 年份尾数 (0-9)
+ * @return 对应星曜的ID，无效则返回-1
+ */
+int getHuaQuanStarId(int yearLast);
+
+/**
+ * @brief 根据年干获取化科星的ID
+ * @param yearLast 年份尾数 (0-9)
+ * @return 对应星曜的ID，无效则返回-1
+ */
+int getHuaKeStarId(int yearLast);
+
+/**
+ * @brief 根据年干获取化忌星的ID
+ * @param yearLast 年份尾数 (0-9)
+ * @return 对应星曜的ID，无效则返回-1
+ */
+int getHuaJiStarId(int yearLast);
+
 }
 }
 

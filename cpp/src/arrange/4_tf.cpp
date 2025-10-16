@@ -69,5 +69,31 @@ int arrangeHuaJi(int yearLast, int ziweiPalace, int timeBranch) {
     }
 }
 
+// --- 根据年干获取四化星ID的函数 ---
+
+int getHuaLuStarId(int yearLast) {
+    // 庚日, 辛巨, 壬梁, 癸破, 甲廉, 乙机, 丙同, 丁阴, 戊贪, 己武
+    const int starIds[] = {3, 10, 12, 14, 6, 2, 5, 8, 9, 4};
+    return starIds[yearLast];
+}
+
+int getHuaQuanStarId(int yearLast) {
+    // 庚武, 辛日, 壬紫, 癸巨, 甲破, 乙梁, 丙机, 丁同, 戊阴, 己贪
+    const int starIds[] = {4, 3, 1, 10, 14, 12, 2, 5, 8, 9};
+    return starIds[yearLast];
+}
+
+int getHuaKeStarId(int yearLast) {
+    // 庚阴, 辛曲, 壬辅, 癸阴, 甲武, 乙紫, 丙昌, 丁机, 戊弼, 己梁
+    const int starIds[] = {8, 18, 15, 8, 4, 1, 17, 2, 16, 12};
+    return starIds[yearLast];
+}
+
+int getHuaJiStarId(int yearLast) {
+    // 庚同, 辛昌, 壬武, 癸贪, 甲日, 乙月, 丙廉, 丁巨, 戊机, 己曲
+    const int starIds[] = {5, 17, 4, 9, 3, 8, 6, 10, 2, 18};
+    return starIds[yearLast];
+}
+
 }
 }

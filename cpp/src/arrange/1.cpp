@@ -4,6 +4,12 @@
 namespace purpchi {
 namespace arrange {
 
+int arrangeYinPalaceGan(int yearLast) {
+    const int yinGanMap[5] = {6, 8, 0, 2, 4};
+    int idx = yearStem % 5; // 0,5一组；1,6一组；2,7一组；3,8一组；4,9一组
+    return yinGanMap[idx];
+}
+
 int arrangeMingPalace(int lunarMonth, int timeBranch) {
     int timeOffset = (timeBranch >= 8) ? (timeBranch - 8) : (timeBranch + 4);
     return (lunarMonth - 1 + 12 - timeOffset) % 12;
