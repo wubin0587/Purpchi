@@ -12,7 +12,7 @@
 
 class Chart
 {
-public:
+protected:
     // 构造函数：接收所有必要的输入信息
     Chart(int year, int lunarMonth, int lunarDay, int timeBranch, bool isMale);
     ~Chart();
