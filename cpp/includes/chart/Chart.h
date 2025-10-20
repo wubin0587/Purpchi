@@ -38,7 +38,7 @@ private:
     int shenPalacePos;  // 身宫位置
 
     // --- 中间计算数据 ---
-    int yearLast;       // 年干 (0-9)
+    int yearLast;       // 年干 (0-9)，0-庚，1-辛，2-壬，9-己
     int yearBranch;     // 年支 (0-11)
     int yinPalaceGan;   // 寅宫天干 (0-9)
 

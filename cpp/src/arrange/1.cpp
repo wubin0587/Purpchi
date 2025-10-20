@@ -20,7 +20,8 @@ int arrangeShenPalace(int mingPalace, int lunarMonth) {
 }
 
 int arrangeLaiyinPalace(int yearLast) {
-    return 0;
+    const int laiYinMap[10] = {2, 1, 0, 11, 8, 7, 6, 5, 4, 3}; // 0-庚->辰(2), 1-辛->卯(1)...
+    return laiYinMap[yearLast];
 }
 
 
